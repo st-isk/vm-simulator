@@ -1,0 +1,16 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 150px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #e8e8e8;
+}
+
+.pageCode {
+    display: flex;
+    flex-direction: column;
+}

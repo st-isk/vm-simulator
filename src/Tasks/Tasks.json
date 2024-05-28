@@ -1,0 +1,148 @@
+[
+    {
+        "variant": "1",
+        "tasks": [
+            {
+                "taskNumber": "1",
+                "virtualAddress": "01010001",
+                "physicalAddress": "11101001",
+                "TLB": [
+                    {
+                        "P": "1",
+                        "virtualNum": "101001",
+                        "physNum": "110010"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "010000",
+                        "physNum": "100000"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "000100",
+                        "physNum": "011001"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "111011",
+                        "physNum": "110000"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "010111",
+                        "physNum": "101011"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "101111",
+                        "physNum": "110100"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "010010",
+                        "physNum": "111000"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "010011",
+                        "physNum": "100010"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "000010",
+                        "physNum": "010111"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "010110",
+                        "physNum": "101010"
+                    }
+                ],
+                "PageDirectory": [
+                    {
+                        "Index": "0",
+                        "P": "1",
+                        "PTAddress": "..."
+                    },
+                    {
+                        "Index": "1",
+                        "P": "0",
+                        "PTAddress": ""
+                    },
+                    {
+                        "Index": "2",
+                        "P": "1",
+                        "PTAddress": "..."
+                    },
+                    {
+                        "Index": "3",
+                        "P": "0",
+                        "PTAddress": ""
+                    },
+                    {
+                        "Index": "4",
+                        "P": "0",
+                        "PTAddress": ""
+                    },
+                    {
+                        "Index": "5",
+                        "P": "1",
+                        "PTAddress": "..."
+                    },
+                    {
+                        "Index": "6",
+                        "P": "1",
+                        "PTAddress": "..."
+                    },
+                    {
+                        "Index": "7",
+                        "P": "1",
+                        "PTAddress": "..."
+                    }
+                ],
+                "PageTable": [
+                    {
+                        "Index": "0",
+                        "P": "1",
+                        "physNum": "100000"
+                    },
+                    {
+                        "Index": "1",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "2",
+                        "P": "1",
+                        "physNum": "111000"
+                    },
+                    {
+                        "Index": "3",
+                        "P": "1",
+                        "physNum": "100010"
+                    },
+                    {
+                        "Index": "4",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "5",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "6",
+                        "P": "1",
+                        "physNum": "101010"
+                    },
+                    {
+                        "Index": "7",
+                        "P": "1",
+                        "physNum": "101011"
+                    }
+                ]
+            }
+        ]
+    }
+]

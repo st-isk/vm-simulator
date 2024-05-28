@@ -1,0 +1,11 @@
+.visualSideWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 20px 15px 20px;
+    row-gap: 70px;
+    background-color: white;
+    border-radius: 0px 10px 10px 0px;
+    min-height: 751px;
+}

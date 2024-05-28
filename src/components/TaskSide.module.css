@@ -1,0 +1,23 @@
+.taskSideWrapper {
+    min-width: 496px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 15px 15px 0px;
+    row-gap: 15px;
+    border-right: 1px solid black;
+    border-radius: 10px 0px 0px 10px;
+    background-color: white;
+}
+
+.divider {
+    width: 450px;
+}
+
+.buttonsWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

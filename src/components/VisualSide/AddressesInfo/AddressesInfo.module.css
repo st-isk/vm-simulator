@@ -1,0 +1,25 @@
+.addressesInfoWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.processDescription {
+    color: red;
+}
+
+.addressesDescription {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    column-gap: 80px;
+}
+
+.addressesBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 15px;
+}

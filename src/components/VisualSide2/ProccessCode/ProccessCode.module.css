@@ -1,0 +1,12 @@
+.proccessCodeWrapper {
+    display: flex;
+    justify-content: space-around;
+    column-gap: 20px;
+}
+
+.proccess {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 15px;
+}

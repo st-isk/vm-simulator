@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100vw;
+}
+
+#root {
+    width: 100vw;
+    background: linear-gradient(to bottom right, #ffffff, #b0d4fd);
+}
+
+.App {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (min-height: 749px) {
+    html,
+    body {
+        height: 100vh;
+    }
+    #root {
+        height: 100vh;
+    }
+    .App {
+        height: 100vh;
+    }
+}
