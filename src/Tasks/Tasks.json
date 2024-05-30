@@ -142,6 +142,85 @@
                         "physNum": "101011"
                     }
                 ]
+            }, 
+            {
+                "taskNumber": "2",
+                "virtualAddress": "01010001",
+                "physicalAddress": "00010001",
+                "TLB": [
+                    {
+                        "P": "1",
+                        "virtualNum": "101",
+                        "physNum": "110"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "100",
+                        "physNum": "100"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "000",
+                        "physNum": "011"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "111",
+                        "physNum": "001"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "011",
+                        "physNum": "101"
+                    },
+                    {
+                        "P": "0",
+                        "virtualNum": "",
+                        "physNum": ""
+                    }
+                ],
+                "PageTable": [
+                    {
+                        "Index": "0",
+                        "P": "1",
+                        "physNum": "011"
+                    },
+                    {
+                        "Index": "1",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "2",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "3",
+                        "P": "1",
+                        "physNum": "101"
+                    },
+                    {
+                        "Index": "4",
+                        "P": "1",
+                        "physNum": "100"
+                    },
+                    {
+                        "Index": "5",
+                        "P": "1",
+                        "physNum": "110"
+                    },
+                    {
+                        "Index": "6",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "7",
+                        "P": "1",
+                        "physNum": "001"
+                    }
+                ]
             }
         ]
     }

@@ -1,5 +1,6 @@
 .taskSideWrapper {
     min-width: 496px;
+    height: 753px;
     display: flex;
     flex-direction: column;
     justify-content: center;

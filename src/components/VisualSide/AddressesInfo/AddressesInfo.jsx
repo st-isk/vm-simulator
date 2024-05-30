@@ -3,11 +3,11 @@ import { AppContext } from "../../../context";
 import styles from "./AddressesInfo.module.css";
 
 function AddressesInfo() {
-    const { currentTask, curStep } = useContext(AppContext);
+    const { taskNumber, currentTask, curStep } = useContext(AppContext);
 
     return (
         <div className={styles.addressesInfoWrapper}>
-            {Object.keys(currentTask).length !== 0 && (
+            {Object.keys(currentTask).length !== 0 && taskNumber > 2 && (
                 <div className={styles.processDescription}>Процесс №1</div>
             )}
             {Object.keys(currentTask).length !== 0 && (
@@ -18,19 +18,28 @@ function AddressesInfo() {
                         </div>
                         <div>
                             Номер виртуальной страницы:{" "}
-                            {currentTask.virtualAddress?.slice(0, 6)}
+                            {taskNumber % 2 !== 0
+                                ? currentTask.virtualAddress?.slice(0, 6)
+                                : currentTask.virtualAddress?.slice(0, 3)}
                         </div>
-                        <div>
-                            Указатель на запись в таблице страниц 2-го уровня:{" "}
-                            {currentTask.virtualAddress?.slice(0, 3)}
-                        </div>
+                        {taskNumber % 2 !== 0 && (
+                            <div>
+                                Указатель на запись в таблице страниц 2-го
+                                уровня:{" "}
+                                {currentTask.virtualAddress?.slice(0, 3)}
+                            </div>
+                        )}
                         <div>
                             Указатель на запись в таблице страниц 1-го уровня:{" "}
-                            {currentTask.virtualAddress?.slice(3, 6)}
+                            {taskNumber % 2 !== 0
+                                ? currentTask.virtualAddress?.slice(3, 6)
+                                : currentTask.virtualAddress?.slice(0, 3)}
                         </div>
                         <div>
                             Смещение на странице:{" "}
-                            {currentTask.virtualAddress?.slice(6, 9)}
+                            {taskNumber % 2 !== 0
+                                ? currentTask.virtualAddress?.slice(6, 9)
+                                : currentTask.virtualAddress?.slice(3, 9)}
                         </div>
                     </div>
                     <div className={styles.addressesBlock}>
@@ -41,12 +50,16 @@ function AddressesInfo() {
                         <div>
                             Номер физической страницы:{" "}
                             {curStep > 14
-                                ? currentTask.physicalAddress?.slice(0, 6)
+                                ? taskNumber % 2 !== 0
+                                    ? currentTask.physicalAddress?.slice(0, 6)
+                                    : currentTask.physicalAddress?.slice(0, 3)
                                 : ""}
                         </div>
                         <div>
                             Смещение на странице:{" "}
-                            {currentTask.virtualAddress?.slice(6, 9)}
+                            {taskNumber % 2 !== 0
+                                ? currentTask.virtualAddress?.slice(6, 9)
+                                : currentTask.virtualAddress?.slice(3, 9)}
                         </div>
                     </div>
                 </div>

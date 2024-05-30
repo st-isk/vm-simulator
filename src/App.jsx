@@ -27,15 +27,28 @@ function App() {
         setHighlightRowPT(-1);
     }, [variant, taskNumber]);
 
-    function solver() {
+    function alertChecker() {
         if (!(variant && taskNumber)) {
             alert("Предварительно выберите вариант и задание!");
-            return;
+            return true;
         }
         if (curStep > 14) {
             alert("Все шаги выполнены!");
-            return;
+            return true;
         }
+        return false;
+    }
+
+    function changeCorrectAnswers(ans) {
+        const res = [...correctAnswers];
+        for (let i = 0; i < ans.length; i++) {
+            res[ans[i].index] = ans[i].value;
+        }
+        setCorrectAnswers(res);
+    }
+
+    function solverType1() {
+        if (alertChecker()) return;
 
         switch (curStep) {
             case 0:
@@ -62,14 +75,6 @@ function App() {
             case 14:
                 stepFourteen();
                 break;
-        }
-
-        function changeCorrectAnswers(ans) {
-            const res = [...correctAnswers];
-            for (let i = 0; i < ans.length; i++) {
-                res[ans[i].index] = ans[i].value;
-            }
-            setCorrectAnswers(res);
         }
 
         function stepZero() {
@@ -222,6 +227,137 @@ function App() {
         }
     }
 
+    function solverType2() {
+        if (alertChecker()) return;
+
+        switch (curStep) {
+            case 0:
+                stepZero();
+                break;
+            case 3:
+                stepThree();
+                break;
+            case 9:
+                stepNine();
+                break;
+            case 11:
+                stepEleven();
+                break;
+            case 12:
+                stepTwelve();
+                break;
+            case 14:
+                stepFourteen();
+                break;
+        }
+
+        function stepZero() {
+            const virtPage = currentTask["virtualAddress"].slice(0, 3);
+            const PTE = parseInt(virtPage, 2);
+            const ans = [];
+            const res = currentTask["TLB"].findIndex(
+                (row) => row.virtualNum === virtPage
+            );
+            const resPT = currentTask["PageTable"].find(
+                (row) => parseInt(row.Index) === PTE
+            );
+            ans.push({ index: 0, value: true });
+            if (res !== -1) {
+                if (resPT?.P === "0") {
+                    alert("Ошибка! Данные есть в TLB и отсутствуют в PT");
+                    return;
+                }
+                ans.push({ index: 1, value: true });
+                for (let i = 2; i < 14; i++) {
+                    ans.push({ index: i, value: false });
+                }
+                setCurStep(curStep + 14);
+                setHighlightRowTLB(res);
+            } else {
+                ans.push({ index: 2, value: true });
+                ans.push({ index: 1, value: false });
+                setCurStep(curStep + 3);
+            }
+            changeCorrectAnswers(ans);
+        }
+
+        function stepThree() {
+            const PTE = parseInt(currentTask["virtualAddress"].slice(0, 3), 2);
+            const ans = [];
+            ans.push({ index: 3, value: false });
+            ans.push({ index: 4, value: false });
+            ans.push({ index: 5, value: false });
+            const res = currentTask["PageTable"].find(
+                (row) => parseInt(row.Index) === PTE
+            );
+            if (res?.P === "1") {
+                alert("Ошибка! Данных нет в TLB, но есть в PT");
+                return;
+            } else {
+                ans.push({ index: 6, value: true });
+                ans.push({ index: 8, value: true });
+                ans.push({ index: 7, value: false });
+                setCurStep(curStep + 6);
+            }
+            changeCorrectAnswers(ans);
+        }
+
+        function stepNine() {
+            const ans = [];
+            ans.push({ index: 9, value: true });
+            ans.push({ index: 10, value: false });
+            setCurStep(curStep + 2);
+            changeCorrectAnswers(ans);
+        }
+
+        function stepEleven() {
+            const ans = [];
+            const PTE = parseInt(currentTask["virtualAddress"].slice(0, 3), 2);
+            const res = currentTask["PageTable"].findIndex(
+                (row) => parseInt(row.Index) === PTE
+            );
+            const taskClone = JSON.parse(JSON.stringify(currentTask));
+            taskClone["PageTable"][res] = {
+                Index: res.toString(),
+                P: "1",
+                physNum: currentTask["physicalAddress"].slice(0, 3),
+            };
+            setCurrentTask(taskClone);
+            setHighlightRowPT(res);
+            ans.push({ index: 11, value: true });
+            setCurStep(curStep + 1);
+            changeCorrectAnswers(ans);
+        }
+
+        function stepTwelve() {
+            const ans = [];
+            let cntP = 0;
+            currentTask["TLB"].forEach((row) => {
+                if (row.P === "1") cntP++;
+            });
+            const taskClone = JSON.parse(JSON.stringify(currentTask));
+            if (cntP === 6) taskClone["TLB"].shift();
+            taskClone["TLB"][cntP === 6 ? 5 : cntP] = {
+                P: "1",
+                virtualNum: currentTask.virtualAddress?.slice(0, 3),
+                physNum: currentTask.physicalAddress?.slice(0, 3),
+            };
+            setCurrentTask(taskClone);
+            setHighlightRowTLB(cntP === 6 ? 5 : cntP);
+            ans.push({ index: 12, value: cntP === 6 ? true : false });
+            ans.push({ index: 13, value: true });
+            setCurStep(curStep + 2);
+            changeCorrectAnswers(ans);
+        }
+
+        function stepFourteen() {
+            const ans = [];
+            ans.push({ index: 14, value: true });
+            setCurStep(curStep + 1);
+            changeCorrectAnswers(ans);
+        }
+    }
+
     return (
         <div className="App">
             <AppContext.Provider
@@ -247,7 +383,7 @@ function App() {
                 }}
             >
                 <TaskSide
-                    solver={solver}
+                    solver={taskNumber % 2 !== 0 ? solverType1 : solverType2}
                     setUserAnswers={setUserAnswers}
                     setCorrectAnswers={setCorrectAnswers}
                     setCurStep={setCurStep}

@@ -4,7 +4,7 @@ import { AppContext } from "../../../context";
 import { useContext } from "react";
 
 function Tables() {
-    const { currentTask, highlightRowTLB, highlightRowPD, highlightRowPT } =
+    const { taskNumber, currentTask, highlightRowTLB, highlightRowPD, highlightRowPT } =
         useContext(AppContext);
 
     return (
@@ -21,7 +21,7 @@ function Tables() {
                     headers={["P", "№ virt. page", "№ phys. page"]}
                 />
             )}
-            {Object.keys(currentTask).length !== 0 && (
+            {Object.keys(currentTask).length !== 0 && taskNumber % 2 !== 0 && (
                 <Table
                     highlightRow={highlightRowPD}
                     caption="Таблица страниц 2-го уровня"
@@ -46,7 +46,7 @@ function Tables() {
                         headers={["Index", "P", "№ phys. page"]}
                     />
                 )}
-                {Object.keys(currentTask).length !== 0 && (
+                {Object.keys(currentTask).length !== 0 && taskNumber % 2 !== 0 && (
                     <Table
                         style={{
                             zIndex: "-1",
@@ -64,7 +64,7 @@ function Tables() {
                         headers={["Index", "P", "№ phys. page"]}
                     />
                 )}
-                {Object.keys(currentTask).length !== 0 && (
+                {Object.keys(currentTask).length !== 0 && taskNumber % 2 !== 0 && (
                     <Table
                         style={{
                             zIndex: "-2",

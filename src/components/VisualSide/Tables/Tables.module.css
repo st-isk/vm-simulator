@@ -5,6 +5,7 @@
     width: 810px;
     justify-content: space-around;
     flex-wrap: wrap;
+    min-height: 460px;
 }
 
 .PTsWrapper {
