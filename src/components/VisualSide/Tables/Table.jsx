@@ -1,6 +1,13 @@
 import "./Table.module.css";
 
-function Table({ caption, headers, data, highlightRow, ...props }) {
+function Table({
+    caption,
+    headers,
+    data,
+    highlightRow,
+    highlightProcess,
+    ...props
+}) {
     return (
         <div {...props}>
             <table>
@@ -16,9 +23,19 @@ function Table({ caption, headers, data, highlightRow, ...props }) {
                     {data.map((row, index) => (
                         <tr
                             key={index}
-                            style={
-                                index === highlightRow ? { color: "red" } : {}
-                            }
+                            style={(() => {
+                                if (highlightProcess) {
+                                    if (
+                                        (highlightProcess === "1" &&
+                                            row.PCID === "10") ||
+                                        (highlightProcess === "2" &&
+                                            row.PCID === "01")
+                                    )
+                                        return { color: "grey" };
+                                }
+                                if (index === highlightRow)
+                                    return { color: "red" };
+                            })()}
                         >
                             {(() => {
                                 const res = [];

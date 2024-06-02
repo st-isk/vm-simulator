@@ -17,6 +17,8 @@ function App() {
     const [highlightRowTLB, setHighlightRowTLB] = useState(-1);
     const [highlightRowPD, setHighlightRowPD] = useState(-1);
     const [highlightRowPT, setHighlightRowPT] = useState(-1);
+    const [processNum, setProcessNum] = useState("");
+    const [TLBtmpForProcess2, setTLBtmpForProcess2] = useState([]);
 
     useEffect(() => {
         setUserAnswers(new Array(15).fill(false));
@@ -32,7 +34,7 @@ function App() {
             alert("Предварительно выберите вариант и задание!");
             return true;
         }
-        if (curStep > 14) {
+        if ((processNum === "" || processNum === "2") && curStep > 14) {
             alert("Все шаги выполнены!");
             return true;
         }
@@ -75,16 +77,25 @@ function App() {
             case 14:
                 stepFourteen();
                 break;
+            case 15:
+                stepFifteen();
+                break;
         }
 
         function stepZero() {
-            const virtPage = currentTask["virtualAddress"].slice(0, 6);
-            const PTE = parseInt(currentTask["virtualAddress"].slice(3, 6), 2);
+            const virtPage = currentTask["virtualAddress" + processNum].slice(
+                0,
+                6
+            );
+            const PTE = parseInt(
+                currentTask["virtualAddress" + processNum].slice(3, 6),
+                2
+            );
             const ans = [];
             const res = currentTask["TLB"].findIndex(
                 (row) => row.virtualNum === virtPage
             );
-            const resPT = currentTask["PageTable"].find(
+            const resPT = currentTask["PageTable" + processNum].find(
                 (row) => parseInt(row.Index) === PTE
             );
             ans.push({ index: 0, value: true });
@@ -108,9 +119,12 @@ function App() {
         }
 
         function stepThree() {
-            const PDE = parseInt(currentTask["virtualAddress"].slice(0, 3), 2);
+            const PDE = parseInt(
+                currentTask["virtualAddress" + processNum].slice(0, 3),
+                2
+            );
             const ans = [];
-            const res = currentTask["PageDirectory"].find(
+            const res = currentTask["PageDirectory" + processNum].find(
                 (row) => parseInt(row.Index) === PDE
             );
             ans.push({ index: 3, value: true });
@@ -131,9 +145,12 @@ function App() {
         }
 
         function stepSix() {
-            const PTE = parseInt(currentTask["virtualAddress"].slice(3, 6), 2);
+            const PTE = parseInt(
+                currentTask["virtualAddress" + processNum].slice(3, 6),
+                2
+            );
             const ans = [];
-            const res = currentTask["PageTable"].find(
+            const res = currentTask["PageTable" + processNum].find(
                 (row) => parseInt(row.Index) === PTE
             );
             if (res?.P === "1") {
@@ -162,12 +179,15 @@ function App() {
 
         function stepTen() {
             const ans = [];
-            const PDE = parseInt(currentTask["virtualAddress"].slice(0, 3), 2);
-            const res = currentTask["PageDirectory"].findIndex(
+            const PDE = parseInt(
+                currentTask["virtualAddress" + processNum].slice(0, 3),
+                2
+            );
+            const res = currentTask["PageDirectory" + processNum].findIndex(
                 (row) => parseInt(row.Index) === PDE
             );
             const taskClone = JSON.parse(JSON.stringify(currentTask));
-            taskClone["PageDirectory"][res] = {
+            taskClone["PageDirectory" + processNum][res] = {
                 Index: res.toString(),
                 P: "1",
                 PTAddress: "...",
@@ -181,15 +201,21 @@ function App() {
 
         function stepEleven() {
             const ans = [];
-            const PTE = parseInt(currentTask["virtualAddress"].slice(3, 6), 2);
-            const res = currentTask["PageTable"].findIndex(
+            const PTE = parseInt(
+                currentTask["virtualAddress" + processNum].slice(3, 6),
+                2
+            );
+            const res = currentTask["PageTable" + processNum].findIndex(
                 (row) => parseInt(row.Index) === PTE
             );
             const taskClone = JSON.parse(JSON.stringify(currentTask));
-            taskClone["PageTable"][res] = {
+            taskClone["PageTable" + processNum][res] = {
                 Index: res.toString(),
                 P: "1",
-                physNum: currentTask["physicalAddress"].slice(0, 6),
+                physNum: currentTask["physicalAddress" + processNum].slice(
+                    0,
+                    6
+                ),
             };
             setCurrentTask(taskClone);
             setHighlightRowPT(res);
@@ -206,11 +232,26 @@ function App() {
             });
             const taskClone = JSON.parse(JSON.stringify(currentTask));
             if (cntP === 10) taskClone["TLB"].shift();
-            taskClone["TLB"][cntP === 10 ? 9 : cntP] = {
-                P: "1",
-                virtualNum: currentTask.virtualAddress?.slice(0, 6),
-                physNum: currentTask.physicalAddress?.slice(0, 6),
-            };
+            taskClone["TLB"][cntP === 10 ? 9 : cntP] = processNum
+                ? {
+                      P: "1",
+                      PCID: processNum === "1" ? "01" : "10",
+                      virtualNum: currentTask[
+                          "virtualAddress" + processNum
+                      ]?.slice(0, 6),
+                      physNum: currentTask[
+                          "physicalAddress" + processNum
+                      ]?.slice(0, 6),
+                  }
+                : {
+                      P: "1",
+                      virtualNum: currentTask[
+                          "virtualAddress" + processNum
+                      ]?.slice(0, 6),
+                      physNum: currentTask[
+                          "physicalAddress" + processNum
+                      ]?.slice(0, 6),
+                  };
             setCurrentTask(taskClone);
             setHighlightRowTLB(cntP === 10 ? 9 : cntP);
             ans.push({ index: 12, value: cntP === 10 ? true : false });
@@ -224,6 +265,24 @@ function App() {
             ans.push({ index: 14, value: true });
             setCurStep(curStep + 1);
             changeCorrectAnswers(ans);
+        }
+
+        function stepFifteen() {
+            alert(
+                "Работа с процессом №1 завершена!\n" +
+                    "Пожалуйста, выполните задание для процесса №2\n" +
+                    "и нажмите на кнопку 'Следующий шаг'!"
+            );
+            setTLBtmpForProcess2(
+                JSON.parse(JSON.stringify(currentTask["TLB"]))
+            );
+            setUserAnswers(new Array(15).fill(false));
+            setCorrectAnswers(new Array(15).fill(null));
+            setHighlightRowTLB(-1);
+            setHighlightRowPD(-1);
+            setHighlightRowPT(-1);
+            setProcessNum("2");
+            setCurStep(0);
         }
     }
 
@@ -249,16 +308,22 @@ function App() {
             case 14:
                 stepFourteen();
                 break;
+            case 15:
+                stepFifteen();
+                break;
         }
 
         function stepZero() {
-            const virtPage = currentTask["virtualAddress"].slice(0, 3);
+            const virtPage = currentTask["virtualAddress" + processNum].slice(
+                0,
+                3
+            );
             const PTE = parseInt(virtPage, 2);
             const ans = [];
             const res = currentTask["TLB"].findIndex(
                 (row) => row.virtualNum === virtPage
             );
-            const resPT = currentTask["PageTable"].find(
+            const resPT = currentTask["PageTable" + processNum].find(
                 (row) => parseInt(row.Index) === PTE
             );
             ans.push({ index: 0, value: true });
@@ -282,12 +347,15 @@ function App() {
         }
 
         function stepThree() {
-            const PTE = parseInt(currentTask["virtualAddress"].slice(0, 3), 2);
+            const PTE = parseInt(
+                currentTask["virtualAddress" + processNum].slice(0, 3),
+                2
+            );
             const ans = [];
             ans.push({ index: 3, value: false });
             ans.push({ index: 4, value: false });
             ans.push({ index: 5, value: false });
-            const res = currentTask["PageTable"].find(
+            const res = currentTask["PageTable" + processNum].find(
                 (row) => parseInt(row.Index) === PTE
             );
             if (res?.P === "1") {
@@ -312,15 +380,21 @@ function App() {
 
         function stepEleven() {
             const ans = [];
-            const PTE = parseInt(currentTask["virtualAddress"].slice(0, 3), 2);
-            const res = currentTask["PageTable"].findIndex(
+            const PTE = parseInt(
+                currentTask["virtualAddress" + processNum].slice(0, 3),
+                2
+            );
+            const res = currentTask["PageTable" + processNum].findIndex(
                 (row) => parseInt(row.Index) === PTE
             );
             const taskClone = JSON.parse(JSON.stringify(currentTask));
-            taskClone["PageTable"][res] = {
+            taskClone["PageTable" + processNum][res] = {
                 Index: res.toString(),
                 P: "1",
-                physNum: currentTask["physicalAddress"].slice(0, 3),
+                physNum: currentTask["physicalAddress" + processNum].slice(
+                    0,
+                    3
+                ),
             };
             setCurrentTask(taskClone);
             setHighlightRowPT(res);
@@ -337,11 +411,26 @@ function App() {
             });
             const taskClone = JSON.parse(JSON.stringify(currentTask));
             if (cntP === 6) taskClone["TLB"].shift();
-            taskClone["TLB"][cntP === 6 ? 5 : cntP] = {
-                P: "1",
-                virtualNum: currentTask.virtualAddress?.slice(0, 3),
-                physNum: currentTask.physicalAddress?.slice(0, 3),
-            };
+            taskClone["TLB"][cntP === 6 ? 5 : cntP] = processNum
+                ? {
+                      P: "1",
+                      PCID: processNum === "1" ? "01" : "10",
+                      virtualNum: currentTask[
+                          "virtualAddress" + processNum
+                      ]?.slice(0, 3),
+                      physNum: currentTask[
+                          "physicalAddress" + processNum
+                      ]?.slice(0, 3),
+                  }
+                : {
+                      P: "1",
+                      virtualNum: currentTask[
+                          "virtualAddress" + processNum
+                      ]?.slice(0, 3),
+                      physNum: currentTask[
+                          "physicalAddress" + processNum
+                      ]?.slice(0, 3),
+                  };
             setCurrentTask(taskClone);
             setHighlightRowTLB(cntP === 6 ? 5 : cntP);
             ans.push({ index: 12, value: cntP === 6 ? true : false });
@@ -355,6 +444,24 @@ function App() {
             ans.push({ index: 14, value: true });
             setCurStep(curStep + 1);
             changeCorrectAnswers(ans);
+        }
+
+        function stepFifteen() {
+            alert(
+                "Работа с процессом №1 завершена!\n" +
+                    "Пожалуйста, выполните задание для процесса №2\n" +
+                    "и нажмите на кнопку 'Следующий шаг'!"
+            );
+            setTLBtmpForProcess2(
+                JSON.parse(JSON.stringify(currentTask["TLB"]))
+            );
+            setUserAnswers(new Array(15).fill(false));
+            setCorrectAnswers(new Array(15).fill(null));
+            setHighlightRowTLB(-1);
+            setHighlightRowPD(-1);
+            setHighlightRowPT(-1);
+            setProcessNum("2");
+            setCurStep(0);
         }
     }
 
@@ -380,10 +487,16 @@ function App() {
                     setHighlightRowPD,
                     highlightRowPT,
                     setHighlightRowPT,
+                    processNum,
+                    setProcessNum,
                 }}
             >
                 <TaskSide
-                    solver={taskNumber % 2 !== 0 ? solverType1 : solverType2}
+                    solver={
+                        currentTask?.TLB?.length === 10
+                            ? solverType1
+                            : solverType2
+                    }
                     setUserAnswers={setUserAnswers}
                     setCorrectAnswers={setCorrectAnswers}
                     setCurStep={setCurStep}
@@ -393,9 +506,16 @@ function App() {
                     variant={variant}
                     taskNumber={taskNumber}
                     setCurrentTask={setCurrentTask}
+                    currentTask={currentTask}
+                    processNum={processNum}
+                    TLBtmpForProcess2={TLBtmpForProcess2}
                 ></TaskSide>
-                {variant && <VisualSide></VisualSide>}
-                {/* <VisualSide2></VisualSide2> */}
+                {variant && !currentTask.isSecondType && (
+                    <VisualSide></VisualSide>
+                )}
+                {variant && currentTask.isSecondType && (
+                    <VisualSide2></VisualSide2>
+                )}
             </AppContext.Provider>
         </div>
     );

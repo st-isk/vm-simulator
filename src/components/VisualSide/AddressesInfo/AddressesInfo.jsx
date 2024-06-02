@@ -3,63 +3,90 @@ import { AppContext } from "../../../context";
 import styles from "./AddressesInfo.module.css";
 
 function AddressesInfo() {
-    const { taskNumber, currentTask, curStep } = useContext(AppContext);
+    const { currentTask, curStep, processNum } = useContext(AppContext);
 
     return (
         <div className={styles.addressesInfoWrapper}>
-            {Object.keys(currentTask).length !== 0 && taskNumber > 2 && (
-                <div className={styles.processDescription}>Процесс №1</div>
+            {Object.keys(currentTask).length !== 0 && processNum && (
+                <div className={styles.processDescription}>
+                    Процесс №{processNum}
+                </div>
             )}
             {Object.keys(currentTask).length !== 0 && (
                 <div className={styles.addressesDescription}>
                     <div className={styles.addressesBlock}>
                         <div style={{ alignSelf: "center" }}>
-                            Виртуальный адрес: {currentTask.virtualAddress}
+                            Виртуальный адрес:{" "}
+                            {currentTask["virtualAddress" + processNum]}
                         </div>
                         <div>
                             Номер виртуальной страницы:{" "}
-                            {taskNumber % 2 !== 0
-                                ? currentTask.virtualAddress?.slice(0, 6)
-                                : currentTask.virtualAddress?.slice(0, 3)}
+                            {currentTask.TLB.length === 10
+                                ? currentTask[
+                                      "virtualAddress" + processNum
+                                  ]?.slice(0, 6)
+                                : currentTask[
+                                      "virtualAddress" + processNum
+                                  ]?.slice(0, 3)}
                         </div>
-                        {taskNumber % 2 !== 0 && (
+                        {currentTask.TLB.length === 10 && (
                             <div>
                                 Указатель на запись в таблице страниц 2-го
                                 уровня:{" "}
-                                {currentTask.virtualAddress?.slice(0, 3)}
+                                {currentTask[
+                                    "virtualAddress" + processNum
+                                ]?.slice(0, 3)}
                             </div>
                         )}
                         <div>
                             Указатель на запись в таблице страниц 1-го уровня:{" "}
-                            {taskNumber % 2 !== 0
-                                ? currentTask.virtualAddress?.slice(3, 6)
-                                : currentTask.virtualAddress?.slice(0, 3)}
+                            {currentTask.TLB.length === 10
+                                ? currentTask[
+                                      "virtualAddress" + processNum
+                                  ]?.slice(3, 6)
+                                : currentTask[
+                                      "virtualAddress" + processNum
+                                  ]?.slice(0, 3)}
                         </div>
                         <div>
                             Смещение на странице:{" "}
-                            {taskNumber % 2 !== 0
-                                ? currentTask.virtualAddress?.slice(6, 9)
-                                : currentTask.virtualAddress?.slice(3, 9)}
+                            {currentTask.TLB.length === 10
+                                ? currentTask[
+                                      "virtualAddress" + processNum
+                                  ]?.slice(6, 9)
+                                : currentTask[
+                                      "virtualAddress" + processNum
+                                  ]?.slice(3, 9)}
                         </div>
                     </div>
                     <div className={styles.addressesBlock}>
                         <div style={{ alignSelf: "center" }}>
                             Физический адрес:{" "}
-                            {curStep > 14 ? currentTask.physicalAddress : ""}
+                            {curStep === 15
+                                ? currentTask["physicalAddress" + processNum]
+                                : ""}
                         </div>
                         <div>
                             Номер физической страницы:{" "}
-                            {curStep > 14
-                                ? taskNumber % 2 !== 0
-                                    ? currentTask.physicalAddress?.slice(0, 6)
-                                    : currentTask.physicalAddress?.slice(0, 3)
+                            {curStep === 15
+                                ? currentTask.TLB.length === 10
+                                    ? currentTask[
+                                          "physicalAddress" + processNum
+                                      ]?.slice(0, 6)
+                                    : currentTask[
+                                          "physicalAddress" + processNum
+                                      ]?.slice(0, 3)
                                 : ""}
                         </div>
                         <div>
                             Смещение на странице:{" "}
-                            {taskNumber % 2 !== 0
-                                ? currentTask.virtualAddress?.slice(6, 9)
-                                : currentTask.virtualAddress?.slice(3, 9)}
+                            {currentTask.TLB.length === 10
+                                ? currentTask[
+                                      "virtualAddress" + processNum
+                                  ]?.slice(6, 9)
+                                : currentTask[
+                                      "virtualAddress" + processNum
+                                  ]?.slice(3, 9)}
                         </div>
                     </div>
                 </div>

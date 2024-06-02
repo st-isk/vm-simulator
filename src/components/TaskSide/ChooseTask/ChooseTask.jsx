@@ -5,8 +5,14 @@ import variants from "../../../Tasks/Tasks.json";
 import styles from "./ChooseTask.module.css";
 
 function ChooseTask() {
-    const { variant, setVariant, taskNumber, setTaskNumber, setCurrentTask } =
-        useContext(AppContext);
+    const {
+        variant,
+        setVariant,
+        taskNumber,
+        setTaskNumber,
+        setCurrentTask,
+        setProcessNum,
+    } = useContext(AppContext);
 
     const findCurrentTask = (newTaskNumber) => {
         const curVar = variants.find((vrnt) => vrnt.variant === variant);
@@ -15,7 +21,11 @@ function ChooseTask() {
 
     const chooseTaskHandler = (newTaskNumber) => {
         setTaskNumber(newTaskNumber);
-        setCurrentTask(findCurrentTask(newTaskNumber));
+        const curTask = findCurrentTask(newTaskNumber);
+        if (curTask["virtualAddress1"] && curTask["virtualAddress2"])
+            setProcessNum("1");
+        else setProcessNum("");
+        setCurrentTask(curTask);
     };
 
     return (

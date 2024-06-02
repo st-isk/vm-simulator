@@ -16,6 +16,9 @@ function TaskSide({
     variant,
     taskNumber,
     setCurrentTask,
+    currentTask,
+    processNum,
+    TLBtmpForProcess2,
 }) {
     function resetHandler() {
         const findCurrentTask = () => {
@@ -29,7 +32,9 @@ function TaskSide({
         setHighlightRowTLB(-1);
         setHighlightRowPD(-1);
         setHighlightRowPT(-1);
-        setCurrentTask(findCurrentTask());
+        if (processNum === "2")
+            setCurrentTask({ ...findCurrentTask(), TLB: TLBtmpForProcess2 });
+        else setCurrentTask(findCurrentTask());
     }
 
     return (
