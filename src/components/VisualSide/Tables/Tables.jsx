@@ -63,9 +63,12 @@ function Tables() {
                             style={{
                                 zIndex: "-1",
                                 position: "absolute",
-                                bottom: "27px",
+                                bottom: "28px",
                                 right: "5px",
                                 left: "5px",
+                                borderBottom: "1px solid rgb(0, 0, 0)",
+                                borderBottomRightRadius: "10px",
+                                borderBottomLeftRadius: "10px",
                             }}
                             caption=""
                             data={
@@ -85,6 +88,9 @@ function Tables() {
                                 bottom: "15px",
                                 right: "10px",
                                 left: "10px",
+                                borderBottom: "1px solid rgb(0, 0, 0)",
+                                borderBottomRightRadius: "10px",
+                                borderBottomLeftRadius: "10px",
                             }}
                             caption=""
                             data={

@@ -62,42 +62,42 @@
                     {
                         "Index": "0",
                         "P": "1",
-                        "PTAddress": "..."
+                        "PTAddress": "+"
                     },
                     {
                         "Index": "1",
                         "P": "0",
-                        "PTAddress": ""
+                        "PTAddress": "-"
                     },
                     {
                         "Index": "2",
                         "P": "1",
-                        "PTAddress": "..."
+                        "PTAddress": "+"
                     },
                     {
                         "Index": "3",
                         "P": "0",
-                        "PTAddress": ""
+                        "PTAddress": "-"
                     },
                     {
                         "Index": "4",
                         "P": "0",
-                        "PTAddress": ""
+                        "PTAddress": "-"
                     },
                     {
                         "Index": "5",
                         "P": "1",
-                        "PTAddress": "..."
+                        "PTAddress": "+"
                     },
                     {
                         "Index": "6",
                         "P": "1",
-                        "PTAddress": "..."
+                        "PTAddress": "+"
                     },
                     {
                         "Index": "7",
                         "P": "1",
-                        "PTAddress": "..."
+                        "PTAddress": "+"
                     }
                 ],
                 "PageTable": [
@@ -292,42 +292,42 @@
                     {
                         "Index": "0",
                         "P": "0",
-                        "PTAddress": ""
+                        "PTAddress": "-"
                     },
                     {
                         "Index": "1",
                         "P": "0",
-                        "PTAddress": ""
+                        "PTAddress": "-"
                     },
                     {
                         "Index": "2",
                         "P": "1",
-                        "PTAddress": "..."
+                        "PTAddress": "+"
                     },
                     {
                         "Index": "3",
                         "P": "1",
-                        "PTAddress": "..."
+                        "PTAddress": "+"
                     },
                     {
                         "Index": "4",
                         "P": "0",
-                        "PTAddress": ""
+                        "PTAddress": "-"
                     },
                     {
                         "Index": "5",
                         "P": "1",
-                        "PTAddress": "..."
+                        "PTAddress": "+"
                     },
                     {
                         "Index": "6",
                         "P": "1",
-                        "PTAddress": "..."
+                        "PTAddress": "+"
                     },
                     {
                         "Index": "7",
                         "P": "0",
-                        "PTAddress": ""
+                        "PTAddress": "-"
                     }
                 ],
                 "PageTable1": [
@@ -378,44 +378,173 @@
                     {
                         "Index": "0",
                         "P": "1",
-                        "PTAddress": "..."
+                        "PTAddress": "+"
                     },
                     {
                         "Index": "1",
                         "P": "1",
-                        "PTAddress": "..."
+                        "PTAddress": "+"
                     },
                     {
                         "Index": "2",
                         "P": "0",
-                        "PTAddress": ""
+                        "PTAddress": "-"
                     },
                     {
                         "Index": "3",
                         "P": "0",
-                        "PTAddress": ""
+                        "PTAddress": "-"
                     },
                     {
                         "Index": "4",
                         "P": "0",
-                        "PTAddress": ""
+                        "PTAddress": "-"
                     },
                     {
                         "Index": "5",
                         "P": "1",
-                        "PTAddress": "..."
+                        "PTAddress": "+"
                     },
                     {
                         "Index": "6",
                         "P": "1",
-                        "PTAddress": "..."
+                        "PTAddress": "+"
                     },
                     {
                         "Index": "7",
                         "P": "0",
-                        "PTAddress": ""
+                        "PTAddress": "-"
                     }
                 ],
+                "PageTable2": [
+                    {
+                        "Index": "0",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "1",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "2",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "3",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "4",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "5",
+                        "P": "1",
+                        "physNum": "001100"
+                    },
+                    {
+                        "Index": "6",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "7",
+                        "P": "0",
+                        "physNum": "DISK"
+                    }
+                ]
+            },
+            {
+                "taskNumber": "4",
+                "TLB": [
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "110100",
+                        "physNum": "101010"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "010101",
+                        "physNum": "010101"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "101010",
+                        "physNum": "101010"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "001010",
+                        "physNum": "001010"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "111111",
+                        "physNum": "111111"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "011011",
+                        "physNum": "011011"
+                    }
+                ],
+                "virtualAddress1": "11010011",
+                "physicalAddress1": "10101010",
+                "PageTable1": [
+                    {
+                        "Index": "0",
+                        "P": "1",
+                        "physNum": "101010"
+                    },
+                    {
+                        "Index": "1",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "2",
+                        "P": "1",
+                        "physNum": "110101"
+                    },
+                    {
+                        "Index": "3",
+                        "P": "1",
+                        "physNum": "101011"
+                    },
+                    {
+                        "Index": "4",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "5",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "6",
+                        "P": "1",
+                        "physNum": "101100"
+                    },
+                    {
+                        "Index": "7",
+                        "P": "1",
+                        "physNum": "101101"
+                    }
+                ],
+                "virtualAddress2": "00101001",
+                "physicalAddress2": "00011101",
                 "PageTable2": [
                     {
                         "Index": "0",
