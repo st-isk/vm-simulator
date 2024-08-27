@@ -2,8 +2,10 @@ import Table from "./Table";
 import styles from "./Tables.module.css";
 import { AppContext } from "../../../context";
 import { useContext } from "react";
+import { forwardRef } from "react";
+import { ArcherElement } from "react-archer";
 
-function Tables() {
+const TablesWithRef = forwardRef((props, ref) => {
     const {
         currentTask,
         highlightRowTLB,
@@ -13,7 +15,7 @@ function Tables() {
     } = useContext(AppContext);
 
     return (
-        <div className={styles.tablesWrapper}>
+        <div ref={ref} className={styles.tablesWrapper}>
             {Object.keys(currentTask).length !== 0 && (
                 <Table
                     highlightRow={highlightRowTLB}
@@ -106,6 +108,15 @@ function Tables() {
                 <div className={styles.extMemory}>Внешняя память</div>
             )}
         </div>
+    );
+});
+TablesWithRef.displayName = "TablesWithRef";
+
+function Tables() {
+    return (
+        <ArcherElement id="tables">
+            <TablesWithRef />
+        </ArcherElement>
     );
 }
 

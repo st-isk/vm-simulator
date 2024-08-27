@@ -40,6 +40,7 @@ function TaskSide({
     return (
         <div className={styles.taskSideWrapper}>
             <ChooseTask></ChooseTask>
+
             <hr className={styles.divider} />
             <TaskDescription>
                 Отметьте правильную последовательность алгоритма формирования

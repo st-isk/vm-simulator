@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ArcherContainer } from "react-archer";
 import "./App.css";
 import TaskSide from "./components/TaskSide";
 import VisualSide from "./components/VisualSide";
@@ -511,7 +512,9 @@ function App() {
                     TLBtmpForProcess2={TLBtmpForProcess2}
                 ></TaskSide>
                 {variant && !currentTask.isSecondType && (
-                    <VisualSide></VisualSide>
+                    <ArcherContainer>
+                        <VisualSide></VisualSide>
+                    </ArcherContainer>
                 )}
                 {variant && currentTask.isSecondType && (
                     <VisualSide2></VisualSide2>
