@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import CustomSelect from "../../UI/CustomSelect/CustomSelect";
 import { AppContext } from "../../../context";
-import variants from "../../../Tasks/Tasks.json";
+//import variants from "../../../Tasks/Tasks.json";
 import styles from "./ChooseTask.module.css";
 
 function ChooseTask() {
     const {
+        variants,
         variant,
         setVariant,
         taskNumber,

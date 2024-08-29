@@ -1,0 +1,597 @@
+[
+    {
+        "variant": "1",
+        "tasks": [
+            {
+                "taskNumber": "1",
+                "virtualAddress": "01010001",
+                "physicalAddress": "11101001",
+                "TLB": [
+                    {
+                        "P": "1",
+                        "virtualNum": "101001",
+                        "physNum": "110010"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "010000",
+                        "physNum": "100000"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "000100",
+                        "physNum": "011001"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "111011",
+                        "physNum": "110000"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "010111",
+                        "physNum": "101011"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "101111",
+                        "physNum": "110100"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "010010",
+                        "physNum": "111000"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "010011",
+                        "physNum": "100010"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "000010",
+                        "physNum": "010111"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "010110",
+                        "physNum": "101010"
+                    }
+                ],
+                "PageDirectory": [
+                    {
+                        "Index": "0",
+                        "P": "1",
+                        "PTAddress": "+"
+                    },
+                    {
+                        "Index": "1",
+                        "P": "0",
+                        "PTAddress": "-"
+                    },
+                    {
+                        "Index": "2",
+                        "P": "1",
+                        "PTAddress": "+"
+                    },
+                    {
+                        "Index": "3",
+                        "P": "0",
+                        "PTAddress": "-"
+                    },
+                    {
+                        "Index": "4",
+                        "P": "0",
+                        "PTAddress": "-"
+                    },
+                    {
+                        "Index": "5",
+                        "P": "1",
+                        "PTAddress": "+"
+                    },
+                    {
+                        "Index": "6",
+                        "P": "1",
+                        "PTAddress": "+"
+                    },
+                    {
+                        "Index": "7",
+                        "P": "1",
+                        "PTAddress": "+"
+                    }
+                ],
+                "PageTable": [
+                    {
+                        "Index": "0",
+                        "P": "1",
+                        "physNum": "100000"
+                    },
+                    {
+                        "Index": "1",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "2",
+                        "P": "1",
+                        "physNum": "111000"
+                    },
+                    {
+                        "Index": "3",
+                        "P": "1",
+                        "physNum": "100010"
+                    },
+                    {
+                        "Index": "4",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "5",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "6",
+                        "P": "1",
+                        "physNum": "101010"
+                    },
+                    {
+                        "Index": "7",
+                        "P": "1",
+                        "physNum": "101011"
+                    }
+                ]
+            },
+            {
+                "taskNumber": "2",
+                "virtualAddress": "01010001",
+                "physicalAddress": "00010001",
+                "TLB": [
+                    {
+                        "P": "1",
+                        "virtualNum": "101",
+                        "physNum": "110"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "100",
+                        "physNum": "100"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "000",
+                        "physNum": "011"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "111",
+                        "physNum": "001"
+                    },
+                    {
+                        "P": "1",
+                        "virtualNum": "011",
+                        "physNum": "101"
+                    },
+                    {
+                        "P": "0",
+                        "virtualNum": "",
+                        "physNum": ""
+                    }
+                ],
+                "PageTable": [
+                    {
+                        "Index": "0",
+                        "P": "1",
+                        "physNum": "011"
+                    },
+                    {
+                        "Index": "1",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "2",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "3",
+                        "P": "1",
+                        "physNum": "101"
+                    },
+                    {
+                        "Index": "4",
+                        "P": "1",
+                        "physNum": "100"
+                    },
+                    {
+                        "Index": "5",
+                        "P": "1",
+                        "physNum": "110"
+                    },
+                    {
+                        "Index": "6",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "7",
+                        "P": "1",
+                        "physNum": "001"
+                    }
+                ]
+            },
+            {
+                "taskNumber": "3",
+                "TLB": [
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "001101",
+                        "physNum": "001100"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "01",
+                        "virtualNum": "011101",
+                        "physNum": "000110"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "01",
+                        "virtualNum": "010100",
+                        "physNum": "000010"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "110101",
+                        "physNum": "111111"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "01",
+                        "virtualNum": "101000",
+                        "physNum": "010000"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "000010",
+                        "physNum": "001001"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "101101",
+                        "physNum": "111000"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "01",
+                        "virtualNum": "101011",
+                        "physNum": "011001"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "110001",
+                        "physNum": "111110"
+                    },
+                    {
+                        "P": "0",
+                        "PCID": "",
+                        "virtualNum": "",
+                        "physNum": ""
+                    }
+                ],
+                "virtualAddress1": "10100010",
+                "physicalAddress1": "01000010",
+                "PageDirectory1": [
+                    {
+                        "Index": "0",
+                        "P": "0",
+                        "PTAddress": "-"
+                    },
+                    {
+                        "Index": "1",
+                        "P": "0",
+                        "PTAddress": "-"
+                    },
+                    {
+                        "Index": "2",
+                        "P": "1",
+                        "PTAddress": "+"
+                    },
+                    {
+                        "Index": "3",
+                        "P": "1",
+                        "PTAddress": "+"
+                    },
+                    {
+                        "Index": "4",
+                        "P": "0",
+                        "PTAddress": "-"
+                    },
+                    {
+                        "Index": "5",
+                        "P": "1",
+                        "PTAddress": "+"
+                    },
+                    {
+                        "Index": "6",
+                        "P": "1",
+                        "PTAddress": "+"
+                    },
+                    {
+                        "Index": "7",
+                        "P": "0",
+                        "PTAddress": "-"
+                    }
+                ],
+                "PageTable1": [
+                    {
+                        "Index": "0",
+                        "P": "1",
+                        "physNum": "010000"
+                    },
+                    {
+                        "Index": "1",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "2",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "3",
+                        "P": "1",
+                        "physNum": "011001"
+                    },
+                    {
+                        "Index": "4",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "5",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "6",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "7",
+                        "P": "0",
+                        "physNum": "DISK"
+                    }
+                ],
+                "virtualAddress2": "00101001",
+                "physicalAddress2": "00011101",
+                "PageDirectory2": [
+                    {
+                        "Index": "0",
+                        "P": "1",
+                        "PTAddress": "+"
+                    },
+                    {
+                        "Index": "1",
+                        "P": "1",
+                        "PTAddress": "+"
+                    },
+                    {
+                        "Index": "2",
+                        "P": "0",
+                        "PTAddress": "-"
+                    },
+                    {
+                        "Index": "3",
+                        "P": "0",
+                        "PTAddress": "-"
+                    },
+                    {
+                        "Index": "4",
+                        "P": "0",
+                        "PTAddress": "-"
+                    },
+                    {
+                        "Index": "5",
+                        "P": "1",
+                        "PTAddress": "+"
+                    },
+                    {
+                        "Index": "6",
+                        "P": "1",
+                        "PTAddress": "+"
+                    },
+                    {
+                        "Index": "7",
+                        "P": "0",
+                        "PTAddress": "-"
+                    }
+                ],
+                "PageTable2": [
+                    {
+                        "Index": "0",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "1",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "2",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "3",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "4",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "5",
+                        "P": "1",
+                        "physNum": "001100"
+                    },
+                    {
+                        "Index": "6",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "7",
+                        "P": "0",
+                        "physNum": "DISK"
+                    }
+                ]
+            },
+            {
+                "taskNumber": "4",
+                "TLB": [
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "110100",
+                        "physNum": "101010"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "010101",
+                        "physNum": "010101"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "101010",
+                        "physNum": "101010"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "001010",
+                        "physNum": "001010"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "111111",
+                        "physNum": "111111"
+                    },
+                    {
+                        "P": "1",
+                        "PCID": "10",
+                        "virtualNum": "011011",
+                        "physNum": "011011"
+                    }
+                ],
+                "virtualAddress1": "11010011",
+                "physicalAddress1": "10101010",
+                "PageTable1": [
+                    {
+                        "Index": "0",
+                        "P": "1",
+                        "physNum": "101010"
+                    },
+                    {
+                        "Index": "1",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "2",
+                        "P": "1",
+                        "physNum": "110101"
+                    },
+                    {
+                        "Index": "3",
+                        "P": "1",
+                        "physNum": "101011"
+                    },
+                    {
+                        "Index": "4",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "5",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "6",
+                        "P": "1",
+                        "physNum": "101100"
+                    },
+                    {
+                        "Index": "7",
+                        "P": "1",
+                        "physNum": "101101"
+                    }
+                ],
+                "virtualAddress2": "00101001",
+                "physicalAddress2": "00011101",
+                "PageTable2": [
+                    {
+                        "Index": "0",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "1",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "2",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "3",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "4",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "5",
+                        "P": "1",
+                        "physNum": "001100"
+                    },
+                    {
+                        "Index": "6",
+                        "P": "0",
+                        "physNum": "DISK"
+                    },
+                    {
+                        "Index": "7",
+                        "P": "0",
+                        "physNum": "DISK"
+                    }
+                ]
+            },
+            {
+                "taskNumber": "5",
+                "isSecondType": true
+            }
+        ]
+    }
+]

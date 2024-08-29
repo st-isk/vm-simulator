@@ -19,6 +19,7 @@ function App() {
     const [highlightRowPD, setHighlightRowPD] = useState(-1);
     const [highlightRowPT, setHighlightRowPT] = useState(-1);
     const [processNum, setProcessNum] = useState("");
+    const [variants, setVariants] = useState([]);
     const [TLBtmpForProcess2, setTLBtmpForProcess2] = useState([]);
 
     useEffect(() => {
@@ -29,6 +30,13 @@ function App() {
         setHighlightRowPD(-1);
         setHighlightRowPT(-1);
     }, [variant, taskNumber]);
+
+    useEffect(() => {
+        fetch("./Tasks.json")
+            .then((response) => response.json())
+            .then((data) => setVariants(data))
+            .catch((error) => console.log("Error fetching data:" + error));
+    }, []);
 
     function alertChecker() {
         if (!(variant && taskNumber)) {
@@ -470,6 +478,8 @@ function App() {
         <div className="App">
             <AppContext.Provider
                 value={{
+                    variants,
+                    setVariants,
                     variant,
                     setVariant,
                     taskNumber,
@@ -493,6 +503,7 @@ function App() {
                 }}
             >
                 <TaskSide
+                    variants={variants}
                     solver={
                         currentTask?.TLB?.length === 10
                             ? solverType1

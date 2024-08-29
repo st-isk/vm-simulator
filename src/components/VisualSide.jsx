@@ -31,7 +31,7 @@ function VisualSide() {
                     relations={[
                         {
                             targetId: "tables",
-                            targetAnchor: "left",
+                            targetAnchor: "top",
                             sourceAnchor: "bottom",
                             label: <div>Label</div>,
                             style: {

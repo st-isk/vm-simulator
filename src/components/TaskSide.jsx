@@ -3,9 +3,10 @@ import ChooseTask from "./TaskSide/ChooseTask/ChooseTask";
 import CustomButton from "./UI/CustomButton/CustomButton";
 import styles from "./TaskSide.module.css";
 import TaskDescription from "./TaskSide/TaskDescription/TaskDescription";
-import variants from "../Tasks/Tasks.json";
+//import variants from "../Tasks/Tasks.json";
 
 function TaskSide({
+    variants,
     solver,
     setUserAnswers,
     setCorrectAnswers,
