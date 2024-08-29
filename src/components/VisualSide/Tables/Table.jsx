@@ -1,4 +1,4 @@
-import "./Table.module.css";
+import styles from "./Table.module.css";
 
 function Table({
     caption,
@@ -10,12 +10,14 @@ function Table({
 }) {
     return (
         <div {...props}>
-            <table>
-                <caption>{caption}</caption>
+            <table className={styles.table}>
+                <caption className={styles.caption}>{caption}</caption>
                 <thead>
                     <tr>
                         {headers.map((header) => (
-                            <th key={header}>{header}</th>
+                            <th key={header} className={styles.th}>
+                                {header}
+                            </th>
                         ))}
                     </tr>
                 </thead>
@@ -23,6 +25,7 @@ function Table({
                     {data.map((row, index) => (
                         <tr
                             key={index}
+                            className={styles.tr}
                             style={(() => {
                                 if (highlightProcess) {
                                     if (
@@ -40,7 +43,11 @@ function Table({
                             {(() => {
                                 const res = [];
                                 for (const key in row) {
-                                    res.push(<td key={key}>{row[key]}</td>);
+                                    res.push(
+                                        <td key={key} className={styles.td}>
+                                            {row[key]}
+                                        </td>
+                                    );
                                 }
                                 return res;
                             })()}

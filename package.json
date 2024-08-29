@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "classnames": "^2.5.1",
     "react": "^18.2.0",
     "react-archer": "^4.4.0",
     "react-dom": "^18.2.0",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "terser": "^5.31.6"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

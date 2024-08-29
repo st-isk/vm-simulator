@@ -4,6 +4,7 @@ import { AppContext } from "../../../context";
 import { useContext } from "react";
 import { forwardRef } from "react";
 import { ArcherElement } from "react-archer";
+import classNames from "classnames";
 
 const TablesWithRef = forwardRef((props, ref) => {
     const {
@@ -47,62 +48,51 @@ const TablesWithRef = forwardRef((props, ref) => {
                     />
                 )}
             <div className={styles.PTsWrapper}>
-                {Object.keys(currentTask).length !== 0 && (
-                    <Table
-                        highlightRow={highlightRowPT}
-                        caption="Таблица страниц 1-го уровня"
-                        data={
-                            Object.keys(currentTask).length === 0
-                                ? []
-                                : currentTask["PageTable" + processNum]
-                        }
-                        headers={["Index", "P", "№ phys. page"]}
-                    />
-                )}
-                {Object.keys(currentTask).length !== 0 &&
-                    currentTask.TLB.length === 10 && (
+                <div className={styles.mainTableWrapper}>
+                    {Object.keys(currentTask).length !== 0 && (
                         <Table
-                            style={{
-                                zIndex: "-1",
-                                position: "absolute",
-                                bottom: "28px",
-                                right: "5px",
-                                left: "5px",
-                                borderBottom: "1px solid rgb(0, 0, 0)",
-                                borderBottomRightRadius: "10px",
-                                borderBottomLeftRadius: "10px",
-                            }}
-                            caption=""
+                            highlightRow={highlightRowPT}
+                            caption="Таблица страниц 1-го уровня"
                             data={
                                 Object.keys(currentTask).length === 0
                                     ? []
-                                    : currentTask["PageDirectory" + processNum]
+                                    : currentTask["PageTable" + processNum]
                             }
                             headers={["Index", "P", "№ phys. page"]}
                         />
                     )}
-                {Object.keys(currentTask).length !== 0 &&
-                    currentTask.TLB.length === 10 && (
-                        <Table
-                            style={{
-                                zIndex: "-2",
-                                position: "absolute",
-                                bottom: "15px",
-                                right: "10px",
-                                left: "10px",
-                                borderBottom: "1px solid rgb(0, 0, 0)",
-                                borderBottomRightRadius: "10px",
-                                borderBottomLeftRadius: "10px",
-                            }}
-                            caption=""
-                            data={
-                                Object.keys(currentTask).length === 0
-                                    ? []
-                                    : currentTask["PageDirectory" + processNum]
-                            }
-                            headers={["Index", "P", "№ phys. page"]}
-                        />
-                    )}
+
+                    {Object.keys(currentTask).length !== 0 &&
+                        currentTask.TLB.length === 10 && (
+                            <Table
+                                className={classNames(styles.bottomTable1)}
+                                caption=""
+                                data={
+                                    Object.keys(currentTask).length === 0
+                                        ? []
+                                        : currentTask[
+                                              "PageDirectory" + processNum
+                                          ]
+                                }
+                                headers={["Index", "P", "№ phys. page"]}
+                            />
+                        )}
+                    {Object.keys(currentTask).length !== 0 &&
+                        currentTask.TLB.length === 10 && (
+                            <Table
+                                className={classNames(styles.bottomTable2)}
+                                caption=""
+                                data={
+                                    Object.keys(currentTask).length === 0
+                                        ? []
+                                        : currentTask[
+                                              "PageDirectory" + processNum
+                                          ]
+                                }
+                                headers={["Index", "P", "№ phys. page"]}
+                            />
+                        )}
+                </div>
             </div>
             {Object.keys(currentTask).length !== 0 && (
                 <div className={styles.extMemory}>Внешняя память</div>
@@ -112,12 +102,4 @@ const TablesWithRef = forwardRef((props, ref) => {
 });
 TablesWithRef.displayName = "TablesWithRef";
 
-function Tables() {
-    return (
-        <ArcherElement id="tables">
-            <TablesWithRef />
-        </ArcherElement>
-    );
-}
-
-export default Tables;
+export default TablesWithRef;

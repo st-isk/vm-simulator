@@ -23,3 +23,28 @@
     border-radius: 10px;
     border: 1px solid rgb(192, 191, 191);
 }
+
+.mainTableWrapper {
+    position: relative;
+    z-index: 1;
+}
+
+.bottomTable1 {
+    z-index: -2;
+    position: absolute;
+    bottom: -30px;
+    left: 0px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.bottomTable2 {
+    z-index: -1;
+    position: absolute;
+    bottom: -15px;
+    left: 0px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
