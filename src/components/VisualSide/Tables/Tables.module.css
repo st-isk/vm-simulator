@@ -48,3 +48,16 @@
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
 }
+
+@keyframes drawArrow {
+    from {
+        stroke-dashoffset: 50; /* Начальное значение смещения пунктира */
+    }
+    to {
+        stroke-dashoffset: 0; /* Конечное значение смещения пунктира */
+    }
+}
+
+.animateArrow {
+    animation: drawArrow 3s linear forwards;
+}

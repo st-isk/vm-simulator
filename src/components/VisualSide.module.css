@@ -9,3 +9,16 @@
     border-radius: 0px 10px 10px 0px;
     height: 753px;
 }
+
+@keyframes drawArrow {
+    from {
+        stroke-dashoffset: 50; /* Начальное значение смещения пунктира */
+    }
+    to {
+        stroke-dashoffset: 0; /* Конечное значение смещения пунктира */
+    }
+}
+
+.animateArrow {
+    animation: drawArrow 3s linear forwards;
+}
