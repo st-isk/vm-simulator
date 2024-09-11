@@ -15,14 +15,23 @@ function ChooseTask() {
         setProcessNum,
     } = useContext(AppContext);
 
-    const findCurrentTask = (newTaskNumber) => {
-        const curVar = variants.find((vrnt) => vrnt.variant === variant);
+    const findCurrentTask = (newTaskNumber, newVariant = variant) => {
+        const curVar = variants.find((vrnt) => vrnt.variant === newVariant);
         return curVar.tasks.find((tsk) => tsk.taskNumber === newTaskNumber);
     };
 
     const chooseTaskHandler = (newTaskNumber) => {
         setTaskNumber(newTaskNumber);
         const curTask = findCurrentTask(newTaskNumber);
+        if (curTask["virtualAddress1"] && curTask["virtualAddress2"])
+            setProcessNum("1");
+        else setProcessNum("");
+        setCurrentTask(curTask);
+    };
+
+    const chooseVariantHandler = (newVariantNumber) => {
+        setVariant(newVariantNumber);
+        const curTask = findCurrentTask(taskNumber, newVariantNumber);
         if (curTask["virtualAddress1"] && curTask["virtualAddress2"])
             setProcessNum("1");
         else setProcessNum("");
@@ -41,7 +50,7 @@ function ChooseTask() {
                     }))}
                     defaultValue="--Выберите вариант--"
                     value={variant}
-                    onChange={setVariant}
+                    onChange={chooseVariantHandler}
                 />
             </div>
             <div>

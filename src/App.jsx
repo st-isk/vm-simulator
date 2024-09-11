@@ -32,11 +32,27 @@ function App() {
     }, [variant, taskNumber]);
 
     useEffect(() => {
-        fetch("./Tasks.json")
-            .then((response) => response.json())
-            .then((data) => setVariants(data))
-            .catch((error) => console.log("Error fetching data:" + error));
+        fetch("./temp.txt")
+            .then((response) => response.text())
+            .then((encryptedData) => {
+                const decryptedData = decryptJSON(encryptedData, "***");
+                setVariants(decryptedData);
+            })
+            .catch((error) => console.log("Error fetching data:", error));
     }, []);
+
+    function decryptJSON(encryptedData, secretKey) {
+        let decryptedData = "";
+
+        for (let i = 0; i < encryptedData.length; i++) {
+            decryptedData += String.fromCharCode(
+                encryptedData.charCodeAt(i) ^
+                    secretKey.charCodeAt(i % secretKey.length)
+            );
+        }
+
+        return JSON.parse(decryptedData);
+    }
 
     function alertChecker() {
         if (!(variant && taskNumber)) {
