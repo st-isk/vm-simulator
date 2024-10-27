@@ -1,8 +1,16 @@
-# React + Vite
+## Установка и запуск
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Windows
 
-Currently, two official plugins are available:
+Для запуска приложения на Windows выполните следующие шаги:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Установка зависимостей**: Выполните скрипт `setup.bat`, чтобы установить необходимые зависимости. Это нужно сделать только один раз перед первым запуском приложения.
+
+2. **Запуск приложения**: После установки зависимостей запустите приложение с помощью скрипта `start-app.bat`.
+
+
+### Linux & macOS
+
+Для запуска приложения на Linux & macOS выполните следующие шаги:
+
+1. **Установка зависимостей и запуск приложения**: Скрипт `start-app.sh` автоматически проверит и установит необходимые зависимости, а затем запустит приложение.
